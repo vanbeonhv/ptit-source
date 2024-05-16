@@ -9,5 +9,8 @@ for i in range(int(input())):
             if cur_num != "":
                 number_list.append(int(cur_num))
             cur_num = ""
-
+            
+    if cur_num != "":
+        number_list.append(int(cur_num))
+        cur_num = ""
     print(max(number_list))
