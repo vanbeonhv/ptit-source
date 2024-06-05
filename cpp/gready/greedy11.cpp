@@ -20,7 +20,7 @@ int main() {
     Q.push(p.second);
   }
 
-  if (k > Q.size()) {
+  if (k >= s.size()) {
     cout << 0;
   } else {
     while (k--) {
@@ -29,12 +29,12 @@ int main() {
       a--;
       Q.push(a);
     }
-  }
 
-  ll res = 0;
-  while (Q.size() > 0) {
-    res += Q.top() * Q.top();
-    Q.pop();
+    ll res = 0;
+    while (Q.size() > 0) {
+      res += Q.top() * Q.top();
+      Q.pop();
+    }
+    cout << res;
   }
-  cout << res;
 }
