@@ -1,4 +1,3 @@
-// Giai thuat sinh
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -10,7 +9,7 @@ void khoitao() {
 }
 
 void in() {
-  for (int i = 1; i <= k; i++) cout << a[i] << " ";
+  for (int i = 1; i <= k; i++) cout << a[i];
   cout << endl;
 }
 
@@ -31,11 +30,6 @@ void sinh() {
 }
 
 int main() {
-#ifndef ONLINE_JUDGE
-  freopen("../../input.txt", "r", stdin);
-  freopen("../../output.txt", "w", stdout);
-#endif
-
   cin >> n >> k;
   khoitao();
   while (!ok) {
