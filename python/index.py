@@ -1,8 +1,22 @@
-k = input()
+# filename = 'test_text.txt'
 
-for i in range(int(k)):
-    n = input()
-    if n[0] + n[1] == n[-2] + n[-1]:
-        print("YES")
-    else:
-        print("NO")
+# with open(filename) as file_object:
+#     lines = file_object.readlines()
+#     print(lines)
+
+# i = 0
+# for line in lines:
+#     print(f"Dong thu {i + 1} co noi dung la {line.rstrip()}")
+#     i += 1
+
+
+
+# with open('test.txt', 'w') as file_write_blae:
+#   file_write_blae.write('test')
+
+import json
+
+
+with open('test.json') as f:
+  data = json.load(f)
+  print(data)
