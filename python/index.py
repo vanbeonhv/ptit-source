@@ -10,7 +10,6 @@
 #     i += 1
 
 
-
 # with open('test.txt', 'w') as file_write_blae:
 #   file_write_blae.write('test')
 
@@ -18,5 +17,8 @@ import json
 
 
 with open('test.json') as f:
-  data = json.load(f)
-  print(data)
+    data = json.load(f)
+    print(data)
+
+
+
