@@ -7,43 +7,39 @@ using namespace std;
 const int MOD = 1e9 + 7;
 
 int n, s, t, u, v;
-int a[1000][1000], visited[1000][1000], r[1000][1000];
+int a[1005][1005];
+int d[1005][1005];
+int visited[1005][1005];
 
-ii d[8] = {{0, 1},  {1, 1},   {1, 0},  {1, -1},
-           {0, -1}, {-1, -1}, {-1, 0}, {-1, 1}};
+int dx[8] = {1, 2, 2, 1, -1, -2, -2, -1};
+int dy[8] = {2, 1, -1, -2, -2, -1, 1, 2};
 
 void nhap() {
   cin >> n >> s >> t >> u >> v;
-
   for (int i = 1; i <= n; i++) {
     for (int j = 1; j <= n; j++) {
       cin >> a[i][j];
     }
   }
-};
+}
 
 int bfs(int i, int j) {
-  visited[i][j] = true;
+  visited[i][j] = 1;
   queue<ii> q;
   q.push({i, j});
-
   while (!q.empty()) {
-    ii top = q.front();
+    ii x = q.front();
     q.pop();
-    int i1 = top.first, j1 = top.second;
-
-    if (i1 == u && j1 == v) {
-      return r[i1][j1];
+    if (x.first == u && x.second == v) {
+      return d[u][v];
     }
 
-    for (int x = 0; x < 8; x++) {
-      int i2 = i1 + d[x].first;
-      int j2 = j1 + d[x].second;
-      if (i2 >= 1 && i2 <= n && j2 >= 1 && j2 <= n && !visited[i2][j2] &&
-          a[i2][j2] == 1) {
-        visited[i2][j2] = 1;
-        r[i2][j2] = r[i1][j1] + 1;
+    for (int b = 1; b <= 8; b++) {
+      int i2 = x.first + dx[b];
+      int j2 = x.second + dy[b];
+      if (i2 >= 1 && i2 <= n && j2 >= 1 && j2 <= n && !visited[i2][j2]) {
         q.push({i2, j2});
+        d[i2][j2] = d[x.first][x.second] + 1;
       }
     }
   }
