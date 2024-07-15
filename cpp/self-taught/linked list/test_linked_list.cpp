@@ -1,62 +1,50 @@
 #include <bits/stdc++.h>
+#define endl "\n"
+#define ll long long
 
 using namespace std;
+const int MOD = 1e9 + 7;
 
-struct Node {
+struct node {
   int data;
-  Node *next;
+  node *next;
 };
 
-Node *make_node(int i) {
-  Node *head = new Node();
-  head->data = i;
-  head->next = NULL;
-  return head;
+node *makeNode(int x) {
+  node *newNode = new node();
+  newNode->data = x;
+  newNode->next = NULL;
+  return newNode;
 }
 
-int Size(Node *head) {
-  int n = 0;
+void duyet(node *head) {
   while (head != NULL) {
-    n++;
-    head = head->next;
-  }
-  return n;
-}
-
-void insertFirst(Node **head, int x) {
-  Node *node = make_node(x);
-  if (*head == NULL) {
-    *head = node;
-  } else {
-    node->next = *head;
-    *head = node;
-  }
-}
-
-void show(Node *head) {
-  while (head != NULL) {
-    cout << head->data << " ";
+    cout << head->data << ' ';
     head = head->next;
   }
 }
 
-// void insert(Node **head, int i, int x) {
-//   if (*head == NULL) {
-//     ins
-//   }
-// }
+void themDau(node *&head, int x) {
+  node *y = makeNode(x);
+  y->next = head;
+  head = y;
+}
 
-int main() {
+void themCuoi(node *&head, )
+
+    int main() {
+  ios_base::sync_with_stdio(false);
+  cin.tie(0);
+  cout.tie(0);
 #ifndef ONLINE_JUDGE
-  freopen("../input.txt", "r", stdin);
-  freopen("../output.txt", "w", stdout);
+  freopen("../../input.txt", "r", stdin);
+  freopen("../../output.txt", "w", stdout);
 #endif
 
-  Node *head = NULL;
-  insertFirst(&head, 2);
-  insertFirst(&head, 3);
-  show(head);
-  cout << "\nsize: " << Size(head);
+  node *head = NULL;
+  for (int i = 1; i <= 5; i++) {
+    themDau(head, i);
+  }
 
-  return 0;
+  duyet(head);
 }
