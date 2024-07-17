@@ -1,9 +1,1 @@
-cnt: 4
-cnt: 4
-cnt: 4
-cnt: 4
-cnt: 4
-cnt: 4
-cnt: 4
-cnt: 4
-2
+YES

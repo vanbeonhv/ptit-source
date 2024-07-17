@@ -33,16 +33,35 @@ void insertNode(node *root, int u, int v, char c) {
   }
 }
 
-void bfs(node *root) {
-  queue<node *> q;
-  q.push(root);
-  while (!q.empty()) {
-    node *temp = q.front();
-    q.pop();
-    cout << temp->val << " ";
+void spiral(node *root) {
+  stack<node *> s1, s2;
+  s1.push(root);
+  while (!s1.empty() || !s2.empty()) {
+    while (!s1.empty()) {
+      node *tmp = s1.top();
+      s1.pop();
+      cout << tmp->val << " ";
+      if (tmp->right != NULL) {
+        s2.push(tmp->right);
+      }
+      if (tmp->left != NULL) {
+        s2.push(tmp->left);
+      }
+    }
 
-    if (temp->left != NULL) q.push(temp->left);
-    if (temp->right != NULL) q.push(temp->right);
+    while (!s2.empty()) {
+      node *tmp = s2.top();
+      s2.pop();
+      cout << tmp->val << " ";
+
+      if (tmp->left != NULL) {
+        s1.push(tmp->left);
+      }
+
+      if (tmp->right != NULL) {
+        s1.push(tmp->right);
+      }
+    }
   }
 }
 
@@ -69,5 +88,5 @@ int main() {
       insertNode(root, u, v, c);
     }
   }
-  bfs(root);
+  spiral(root);
 }

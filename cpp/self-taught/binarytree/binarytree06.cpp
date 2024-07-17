@@ -5,6 +5,7 @@
 using namespace std;
 const int MOD = 1e9 + 7;
 
+bool res = true;
 struct node {
   int val;
   node *left;
@@ -25,6 +26,7 @@ void makeRoot(node *root, int u, int v, char c) {
 
 void insertNode(node *root, int u, int v, char c) {
   if (root == NULL) return;
+
   if (root->val == u) {
     makeRoot(root, u, v, c);
   } else {
@@ -33,17 +35,15 @@ void insertNode(node *root, int u, int v, char c) {
   }
 }
 
-void bfs(node *root) {
-  queue<node *> q;
-  q.push(root);
-  while (!q.empty()) {
-    node *temp = q.front();
-    q.pop();
-    cout << temp->val << " ";
-
-    if (temp->left != NULL) q.push(temp->left);
-    if (temp->right != NULL) q.push(temp->right);
+void checkFullBinaryTree(node *root) {
+  if ((root->right == NULL && root->left != NULL) ||
+      (root->right != NULL && root->left == NULL)) {
+    res = false;
+    return;
   }
+
+  if (root->left != NULL) checkFullBinaryTree(root->left);
+  if (root->right != NULL) checkFullBinaryTree(root->right);
 }
 
 int main() {
@@ -54,7 +54,6 @@ int main() {
   freopen("../../input.txt", "r", stdin);
   freopen("../../output.txt", "w", stdout);
 #endif
-
   int n;
   cin >> n;
   node *root = NULL;
@@ -65,9 +64,13 @@ int main() {
     if (root == NULL) {
       root = new node(u);
       makeRoot(root, u, v, c);
-    } else {
+    } else
       insertNode(root, u, v, c);
-    }
   }
-  bfs(root);
+
+  checkFullBinaryTree(root);
+  if (res)
+    cout << "YES";
+  else
+    cout << "NO";
 }
