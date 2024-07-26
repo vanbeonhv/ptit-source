@@ -581,4 +581,247 @@ int main(){
 
 #18
 ------------------------------------------------------------------------
+#include<bits/stdc++.h>
+using namespace std;
+
+struct SinhVien{
+	int maSv;
+	string ten, ngaySinh;
+	float diem1, diem2, diem3, tongDiem;
+};
+
+bool compareSinhVien(SinhVien a, SinhVien b){
+	return a.tongDiem > b.tongDiem;
+}
+
+class lopHoc{
+	int N;
+	vector<SinhVien> danhSach;
+	public:
+		void nhap(int ma){
+			SinhVien sv;
+			sv.maSv = ma;
+			getline(cin, sv.ten);
+			getline(cin, sv.ngaySinh);
+			cin >> sv.diem1 >> sv.diem2 >> sv.diem3;
+			sv.tongDiem = sv.diem1 + sv.diem2 + sv.diem3;
+			cin.ignore();
+			danhSach.push_back(sv);
+		}
+		
+		void sapXep(){
+			stable_sort(danhSach.begin(), danhSach.end(), compareSinhVien);
+		}
+		
+		void in(){
+			for(SinhVien sv: danhSach){
+				cout << sv.maSv << " " << sv.ten << " " << sv.ngaySinh << " " << fixed << setprecision(1) << sv.tongDiem << endl;
+			}
+		}
+	
+};
+
+
+int main(){
+	int k; cin >> k;
+	cin.ignore();
+	lopHoc lh;
+	for(int i = 0 ; i < k; i++){
+		SinhVien sv;
+		lh.nhap(i+1);
+	}
+	lh.sapXep();
+	lh.in();
+	return 0;
+}
+
+#19
+------------------------------------------------------------------------
+#include<bits/stdc++.h>
+using namespace std;
+
+struct SinhVien{
+	int maSv;
+	string ten;
+	float diemA, diemB, diemC, tongDiem;
+};
+
+bool compareSinhVien(SinhVien a, SinhVien b){
+	return a.tongDiem < b.tongDiem;
+}
+
+class LopHoc{
+	int maSvTuTang = 0;
+	vector<SinhVien> danhSach;
+	public:
+		void themMoi(){
+			int k; cin >> k;
+			cin.ignore();
+			cout << "------\nso sinh vien duoc them: " << k << endl;
+
+			while(k--){
+				SinhVien sv;
+				maSvTuTang++;
+				sv.maSv = maSvTuTang;
+				getline(cin, sv.ten);
+				cin >> sv.diemA >> sv.diemB >> sv.diemC;
+				sv.tongDiem = sv.diemA + sv.diemB + sv.diemC;
+				cin.ignore();
+				danhSach.push_back(sv);
+			}
+		}
+		
+		void capNhatDiem(){
+			int maSv; cin >> maSv;
+			cin.ignore();	
+			cout << "------\nma sinh vien duoc sua: " << maSv << endl;
+			
+			SinhVien sv = danhSach[maSv - 1];
+			getline(cin, sv.ten);
+			cin >> sv.diemA >> sv.diemB >> sv.diemC;
+			cin.ignore();
+			sv.tongDiem = sv.diemA + sv.diemB + sv.diemC;
+		}
+		
+		void in(){
+			sort(danhSach.begin(), danhSach.end(), compareSinhVien);
+			for(SinhVien sv: danhSach){
+				cout << sv.maSv << " " << sv.ten << " " << sv.diemA << " " << sv.diemB << " " << sv.diemC << endl;
+			}
+		}
+		
+};
+
+int main(){
+	LopHoc lh;
+	while(true){
+		int luaChon;
+		cin >> luaChon;
+		cin.ignore();
+		if(luaChon == 1){
+			lh.themMoi();
+		} else if(luaChon == 2){
+			lh.capNhatDiem();
+		} else if(luaChon == 3){
+			lh.in();
+			break;
+		}
+	}
+	return 0;
+}
+
+#20
+------------------------------------------------------------------------
+#include<bits/stdc++.h>
+using namespace std;
+
+int gcd(int a, int b) {
+	while(b != 0) {
+		int c = a % b;
+		a = b;
+		b = c;
+	}
+	return a;
+}
+
+int lcm(int a, int b) {
+	return (a / gcd(a, b)) * b;
+}
+
+struct PhanSo {
+	int tu, mau;
+};
+
+void rutGon(PhanSo &x) {
+	int ucln = gcd(x.tu, x.mau);
+	x.tu = x.tu / ucln;
+	x.mau = x.mau / ucln;
+}
+
+class TinhPhanSo {
+	private:
+		PhanSo p, q, tong, thuong;
+	public:
+		PhanSo getPhanSoP() {
+			return p;
+		}
+
+		PhanSo getPhanSoQ() {
+			return q;
+		}
+
+		PhanSo getPhanSoTong() {
+			return tong;
+		}
+
+		PhanSo getPhanSoThuong() {
+			return thuong;
+		}
+		
+		void nhap() {
+			cin >> p.tu >> p.mau >> q.tu >> q.mau;
+		}
+
+		void rutGonHaiPhanSo() {
+			rutGon(p);
+			rutGon(q);
+		}
+
+		void quyDong() {
+			int mauChung = lcm(p.mau, q.mau);
+
+			p.tu *= mauChung / p.mau;
+			p.mau = mauChung;
+			q.tu *= mauChung / q.mau;
+			q.mau = mauChung;
+		}
+
+		void tinhTong() {
+			tong.tu = p.tu + q.tu;
+			tong.mau = p.mau;
+			rutGon(tong);
+		}
+
+		void inPhanSo(PhanSo x) {
+			cout << x.tu << '/' << x.mau << " ";
+		}
+
+		void tinhThuong() {
+			thuong.tu = p.tu * p.mau;
+			thuong.mau = p.mau * q.tu;
+			rutGon(thuong);
+		
+};
+
+int main() {
+	int k;
+	cin >> k;
+	for(int i = 1; i <= k; i++) {
+		TinhPhanSo tps;
+		tps.nhap();
+		tps.rutGonHaiPhanSo();
+		tps.quyDong();
+		tps.tinhTong();
+		tps.tinhThuong();
+
+		PhanSo p = tps.getPhanSoP();
+		PhanSo q = tps.getPhanSoQ();
+		PhanSo tong = tps.getPhanSoTong();
+		PhanSo thuong = tps.getPhanSoThuong();
+
+		cout << "Case #" << i << ":\n";
+		tps.inPhanSo(p);
+		tps.inPhanSo(q);
+		cout << endl;
+		tps.inPhanSo(tong);
+		cout << endl;
+		tps.inPhanSo(thuong);
+		cout << endl;
+	}
+
+	return 0;
+}
+
+#21
+------------------------------------------------------------------------
 

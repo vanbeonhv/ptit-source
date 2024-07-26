@@ -1,0 +1,3 @@
+- isalpha, isdigit
+- toupper, tolower
+- fixed << setprecision
