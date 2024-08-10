@@ -16,8 +16,8 @@ struct DanhSach {
 };
 
 void KhoiTaoDanhSach(DanhSach &ds) {
-	ds->PFirst = NULL;
-	ds->PLast = NULL;
+	ds.PFirst = NULL;
+	ds.PLast = NULL;
 }
 
 Node *makeNode(CanBo cb) {
