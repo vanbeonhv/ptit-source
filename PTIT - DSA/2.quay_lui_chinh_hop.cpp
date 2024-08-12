@@ -21,8 +21,8 @@ void Try(int i){
 
 int main(){
 	cin >> n >> k;
-	
+
 	Try(1);
-	
+	vector<int> a;
 	return 0;
 }
