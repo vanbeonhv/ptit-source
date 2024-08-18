@@ -12,5 +12,13 @@ int main() {
 	freopen("../input.txt", "r", stdin);
 	freopen("../output.txt", "w", stdout);
 #endif
-
+	int a, b;
+	cin >> a >> b;
+	ll ans = 1;
+	ll mod = 1e9 + 7;
+	for(int i = 1; i <= b; i++){
+		ans *= a % mod;
+		ans %= mod;
+	}
+	cout << ans;
 }
