@@ -3,6 +3,7 @@
 #define ll long long
 
 using namespace std;
+const int MOD = 1e9 + 7;
 
 int main() {
   ios_base::sync_with_stdio(false);
@@ -18,8 +19,16 @@ int main() {
   int a[n];
   for (int &x : a) cin >> x;
 
-  int l = 0, cur_sum = 0;
-  for (int r = 0; r < n; r++) {
-    cur_sum += a[r];
+  int cnt = 0;
+  for (int right = 0; right < n; right++) {
+    int cur_sum = a[right], left = right;
+    while (cur_sum >= s) {
+      cnt++;
+      if (left == 0) break;
+
+      left--;
+      cur_sum += a[left];
+    }
   }
+  cout << cnt;
 }
