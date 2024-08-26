@@ -20,18 +20,17 @@ int main() {
   for (int &x : a) cin >> x;
 
   int left = 0, cnt = 0;
-  unordered_set<int> freq;
+  unordered_map<int, int> freq;
 
   for (int right = 0; right < n; right++) {
-    freq.insert(a[right]);
+    freq[a[right]]++;
 
     while (freq.size() > k) {
-      freq.erase(a[left]);
-
-      int duplicated_left = a[left];
-      while (duplicated_left == a[left]) {
-        left++;
-      }
+      freq[a[left]]--;
+      if(freq[a[left]] == 0){
+      	freq.erase(a[left]);
+	  }
+	  left++;
     }
     cnt += right - left + 1;
   }
