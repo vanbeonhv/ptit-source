@@ -1,4 +1,11 @@
-*
+PTIT - DSA/**
+28tech - DSA/**
+PTIT - SPOJ/**
+PTIT - C++/**
+CODE PTIT - Python/**
+**/.idea/**
+.vscode/**
+
 !*.cpp
 !*.pdf
 !*.docx
@@ -7,3 +14,4 @@
 !*.md
 !*.py
 !*.png
+
