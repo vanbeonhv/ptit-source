@@ -6,7 +6,7 @@ Online Java is a quick and easy tool that helps you to build, compile, test your
 */
 import java.util.Scanner;
 
-public class Main
+public class J01021_TichLuyThua
 {
     public static Scanner in = new Scanner(System.in);
     public static void main(String[] args) {
