@@ -1,4 +1,4 @@
-﻿class SinhVien {
+class SinhVien {
     public static int ID = 1;
     private String id, name, birth, grade;
     private double gpa;
