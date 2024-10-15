@@ -1,9 +1,9 @@
-class SinhVien {
+class SinhVien7010 {
     public static int ID = 1;
     private String id, name, birth, grade;
     private double gpa;
 
-    public SinhVien(String id, String name, String birth, String grade, double gpa) {
+    public SinhVien7010(String id, String name, String birth, String grade, double gpa) {
         this.id = "B20DCCN" + String.format("%03d", ID);
         this.name = name;
         this.birth = birth;
