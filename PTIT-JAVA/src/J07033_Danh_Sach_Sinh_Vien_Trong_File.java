@@ -19,7 +19,7 @@ class SinhVien implements Comparable<SinhVien> {
     }
 
     private void standardize() {
-        String[] list = name.split("\\s+");
+        String[] list = name.trim().split("\\s+");
         StringBuilder newName = new StringBuilder();
         for (int i = 0; i < list.length; i++) {
             newName.append(list[i].substring(0, 1).toUpperCase())
