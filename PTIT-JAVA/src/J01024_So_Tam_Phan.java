@@ -1,24 +1,24 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class J03006_So_Dep {
+
+public class J01024_So_Tam_Phan {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int k = in.nextInt();
+        ArrayList<Character> chars = new ArrayList<>();
+        chars.add('0');
+        chars.add('1');
+        chars.add('2');
+
         while (k-- > 0) {
-            String s = in.next().trim();
-            StringBuilder sb = new StringBuilder();
+            String s = in.next();
             boolean isValid = true;
-            for (int i = s.length() - 1; i >= 0; i--) {
-                int num = Integer.parseInt(String.valueOf(s.charAt(i)));
-                if (num % 2 != 0) {
+            for (int i = 0; i < s.length(); i++) {
+                if (!chars.contains(s.charAt(i))) {
                     isValid = false;
                     break;
                 }
-                sb.append(s.charAt(i));
-            }
-
-            if (!sb.toString().equals(s)) {
-                isValid = false;
             }
 
             if (isValid) {
