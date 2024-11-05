@@ -1,3 +1,5 @@
+package kiem_tra_giua_ky;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -8,7 +10,6 @@ public class bai_3 {
         StringBuilder sb = new StringBuilder();
         while (in.hasNextLine()) {
             sb.append(in.nextLine().trim());
-            sb.append(" ");
         }
 
         Set<String> set = new HashSet<>();
