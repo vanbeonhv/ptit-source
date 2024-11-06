@@ -14,27 +14,6 @@ import java.sql.Statement;
  * @author nguye
  */
 public class JDBCConnection {
-
-    public static void main(String args[]) {
-        try {
-            Connection connection = getConnection();
-            Statement statement = connection.createStatement();
-
-//            statement.executeUpdate("INSERT INTO student(id, ten, dia_chi) " + "VALUES (12, 'Hoang',  'Bac Ninh')");
-            ResultSet rs = statement.executeQuery("SELECT * FROM Book");
-
-            while (rs.next()) {
-                System.out.println(rs.getInt(1) + " \t " + rs.getString(2)
-                        + " \t " + rs.getString(3) + " " + rs.getString(4));
-            }
-            // close connection
-            connection.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
     public static Connection getConnection() {
         Connection connect = null;
         try {

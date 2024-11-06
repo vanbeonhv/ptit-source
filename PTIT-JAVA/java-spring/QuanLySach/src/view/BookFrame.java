@@ -4,6 +4,7 @@
  */
 package view;
 
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import model.Book;
 import service.BookService;
@@ -15,6 +16,8 @@ import service.BookService;
 public class BookFrame extends javax.swing.JFrame {
 
     private BookService bookService;
+    private DefaultTableModel defaultTableModel;
+    private List<Book> books;
 
     /**
      * Creates new form BookFrame
@@ -22,22 +25,18 @@ public class BookFrame extends javax.swing.JFrame {
     public BookFrame() {
         initComponents();
         bookService = new BookService();
-        
+
         //Config table
-        DefaultTableModel defaultTableModel = new DefaultTableModel();
+        defaultTableModel = new DefaultTableModel();
         jTable1.setModel(defaultTableModel);
         defaultTableModel.addColumn("ID");
         defaultTableModel.addColumn("Ten sach");
         defaultTableModel.addColumn("Tac gia");
         defaultTableModel.addColumn("Chuyen nganh");
         defaultTableModel.addColumn("Số lượng");
-        
-        var books = bookService.getAllBook();
-        for(Book b : books){
-            defaultTableModel.addRow(new Object[]{b.getId(), b.getTenSach(), b.getTacGia(), b.getChuyenNganh(), b.getSoLuong()});
-        }
-        
-        
+        books = bookService.getAllBook();
+        setData(books);
+
     }
 
     /**
@@ -49,18 +48,20 @@ public class BookFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        txtTenSach = new javax.swing.JTextField();
+        txtTacGia = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtChuyenNganh = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtSoLuong = new javax.swing.JTextField();
+        btnThem = new javax.swing.JButton();
+        cbSapXep = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,40 +76,152 @@ public class BookFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jLabel1.setText("Ten");
+
+        txtTenSach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTenSachActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Tac gia");
+
+        jLabel3.setText("Chuyen nganh");
+
+        jLabel4.setText("So luong");
+
+        txtSoLuong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSoLuongActionPerformed(evt);
+            }
+        });
+
+        btnThem.setText("Them");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
+
+        cbSapXep.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sắp xếp theo tên tác giả", "Sắp xếp theo tên sách" }));
+        cbSapXep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbSapXepActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtTenSach, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtTacGia, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtChuyenNganh, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(45, 45, 45)
+                        .addComponent(txtSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnThem)
+                    .addComponent(cbSapXep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtTenSach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtTacGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtChuyenNganh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(btnThem)
+                .addGap(18, 18, 18)
+                .addComponent(cbSapXep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void txtSoLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoLuongActionPerformed
         // TODO add your handling code here:
-        bookService = new BookService();
-        var books = bookService.getAllBook();
+    }//GEN-LAST:event_txtSoLuongActionPerformed
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void txtTenSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenSachActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTenSachActionPerformed
+
+    private void setData(List<Book> books) {
+        for (Book b : books) {
+            defaultTableModel.addRow(new Object[]{b.getId(), b.getTenSach(), b.getTacGia(), b.getChuyenNganh(), b.getSoLuong()});
+        }
+    }
+
+    private void refreshFrame() {
+        defaultTableModel.setRowCount(0);
+        var books = bookService.getAllBook();
+        setData(books);
+
+    }
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+        var tenSach = txtTenSach.getText();
+        var tacGia = txtTacGia.getText();
+        var chuyenNganh = txtChuyenNganh.getText();
+        var sl = txtSoLuong.getText();
+        int slInt = Integer.parseInt(sl);
+        var book = new Book(tenSach, tacGia, chuyenNganh, slInt);
+        bookService = new BookService();
+        bookService.addBook(book);
+
+        //reset
+        txtTenSach.setText("");
+        txtTacGia.setText("");
+        txtChuyenNganh.setText("");
+        txtSoLuong.setText("");
+
+        refreshFrame();
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void cbSapXepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSapXepActionPerformed
+        // TODO add your handling code here:
+        String option = cbSapXep.getItemAt(cbSapXep.getSelectedIndex());
+        if(option == "Sắp xếp theo tên tác giả"){
+            
+        } else {
+            
+        }
+    }//GEN-LAST:event_cbSapXepActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,8 +259,17 @@ public class BookFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JComboBox<String> cbSapXep;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtChuyenNganh;
+    private javax.swing.JTextField txtSoLuong;
+    private javax.swing.JTextField txtTacGia;
+    private javax.swing.JTextField txtTenSach;
     // End of variables declaration//GEN-END:variables
 }

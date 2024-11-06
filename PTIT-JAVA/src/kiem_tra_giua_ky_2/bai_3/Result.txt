@@ -1,0 +1,6 @@
+C003 Giang Minh Tung BAV_MIS Banking Academy of Vietnam
+C001 Le Trung Toan BAV_MIS Banking Academy of Vietnam
+C004 Nguyen Hang Giang FTU Knights1 Foreign Trade University
+C005 Nguyen Thanh Nhan FTU Knights1 Foreign Trade University
+C002 Nguyen Trinh Quoc Long BAV_MIS Banking Academy of Vietnam
+C006 Nguyen Viet Duc FTU Knights1 Foreign Trade University

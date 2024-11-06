@@ -5,11 +5,13 @@
 package service;
 
 import dao.BookDao;
+
+import java.sql.SQLException;
 import java.util.List;
+
 import model.Book;
 
 /**
- *
  * @author nguye
  */
 public class BookService {
@@ -21,16 +23,11 @@ public class BookService {
     }
 
     public List<Book> getAllBook() {
-        var books = bookDao.getAllBook();
-        if (books.size() == 0) {
-            System.out.println("books empty");
-        } else {
-            for (Book b : books) {
-                System.out.println(b);
-            }
-        }
-        return books;
+        return bookDao.getAllBook();
+    }
 
+    public void addBook(Book book) {
+        bookDao.addBook(book);
     }
 
 }
