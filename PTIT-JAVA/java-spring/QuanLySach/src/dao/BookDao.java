@@ -31,9 +31,9 @@ public class BookDao {
                 var book = new Book();
                 book.setId(rs.getInt("id"));
                 book.setTenSach(rs.getString("tenSach"));
-                book.setTacGia(rs.getString(3));
-                book.setChuyenNganh(rs.getString(4));
-                book.setSoLuong(rs.getInt(5));
+                book.setTacGia(rs.getString("tacGia"));
+                book.setChuyenNganh(rs.getString("chuyenNganh"));
+                book.setSoLuong(rs.getInt("soLuong"));
                 books.add(book);
             }
            
