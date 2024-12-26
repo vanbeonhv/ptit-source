@@ -1,4 +1,4 @@
-package bai_1;
+package kiem_tra_giua_ky.bai_1;
 
 import java.io.File;
 import java.io.FileNotFoundException;

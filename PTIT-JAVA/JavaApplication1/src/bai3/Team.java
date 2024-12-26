@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package kiem_tra_giua_ky_2.bai_3;
+package bai3;
 
 /**
+ *
  * @author vanbeonhv
  */
 public class Team {

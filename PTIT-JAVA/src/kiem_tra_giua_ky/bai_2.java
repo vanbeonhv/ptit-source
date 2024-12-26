@@ -1,8 +1,10 @@
+package kiem_tra_giua_ky;
+
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 import static java.lang.Math.sqrt;
 
@@ -13,20 +15,16 @@ public class bai_2 {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         ObjectInputStream in = new ObjectInputStream(new FileInputStream("DAYSO.DAT"));
         ArrayList<Integer> arrayList = (ArrayList<Integer>) in.readObject();
-        int freq[] = new int[1000001];
         sangNguyenTo();
-        for (Integer i : freq) {
-            i = 0;
-        }
+
+        TreeSet<Integer> treeSet = new TreeSet<>();
 
         for (Integer i : arrayList) {
-            if (ngyento[i] == 1 && i >= 100) {
-                freq[i]++;
-            }
+            treeSet.add(i);
         }
 
-        for (int i = 2; i <= MAX; i++) {
-            if (freq[i] >= 1) {
+        for (Integer i : treeSet) {
+            if (ngyento[i] == 1 && i >= 100) {
                 System.out.println(i);
             }
         }

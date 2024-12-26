@@ -7,12 +7,12 @@ import java.util.*;
 public class bai_3 {
     public static void main(String[] args) throws FileNotFoundException {
         Scanner in = new Scanner(new File("VANBAN.in"));
-        var sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         while (in.hasNextLine()) {
-            sb.append(in.nextLine().trim());
+            sb.append(in.nextLine());
         }
 
-        var set = new HashSet<>();
+        HashSet<String> set = new HashSet<>();
         ArrayList<String> arrayList = new ArrayList<>();
         String[] list = sb.toString().split("\\s++");
         for (String s : list) {
